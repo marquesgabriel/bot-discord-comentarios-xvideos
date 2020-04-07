@@ -26,8 +26,15 @@ async def meajuda(ctx):
 async def mensagem(ctx):
     await bot.say('**Buscando...\n**')
     try:
-        comment = choose_random_porn_comment()
+        comment, url = choose_random_porn_comment()
         await bot.say(format_comment(*comment))
+        embed = discord.Embed(
+            title='Link Maroto',
+            url='https://xvideos.com'+url,
+            description='pega o video aqui meu parceiro \:wink:'
+        )
+        print(embed)
+        await bot.send(embed)
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 
@@ -43,14 +50,12 @@ async def telemensagem(ctx):
         await bot.say(author)
         await bot.say(comment, tts=True)
         await bot.say(title)
-        print(url)
         embed = discord.Embed(
             title='Link Maroto',
             url='https://xvideos.com'+url,
             description='pega o video aqui meu parceiro \:wink:'
         )
-        print(embed)
-        await bot.send_message(embed)
+        await bot.send(embed)
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 

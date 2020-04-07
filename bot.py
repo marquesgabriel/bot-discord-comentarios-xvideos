@@ -7,7 +7,7 @@ BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 bot = commands.Bot(command_prefix='!')
 
-def format_comment(author, content, title):
+def format_comment(author, content, title, url):
     mask = '**O {0}  comentou o seguinte:**\n`{1}`\n\n**vi isso no video:**\n`{2}`'
     return mask.format(author, content, title)
 
@@ -19,7 +19,12 @@ async def on_ready():
 @bot.command(description='Apresenta a lista de ajuda ao usuário.', pass_context=True)
 async def meajuda(ctx):
     await bot.send_message(ctx.message.author, '*Olá. Aqui estão os comandos:*\n - `!mensagem` - Procura um comentario aleatório no Xvideos em Portugês\n - `!telemensagem` - Procura um comentario aleatório no Xvideos em Portugês e o envia com TTS (Text to Speech)\n - `!busca *termo*` - Procura um video pelo termo passado, se não passado nenhum, é retornado um video aleatório\n - `!meajuda` - Mostra esta mensagem.\n\n Encontrou algum problema ou tem alguma sugestão para o bot? Sinta-se livre para nos enviar uma mensagem por este link https://github.com/marquesgabriel/bot-discord-comentarios-xvideos/issues\n')
-
+    embed = discord.Embed(
+        title='Link Maroto',
+        url='https://xvideos.com'+url,
+        description='pega o video aqui meu parceiro \:wink:'
+    )
+    await bot.send_message(embed)
     await bot.delete_message(ctx.message)
 
 
@@ -38,12 +43,18 @@ async def mensagem():
 async def telemensagem():
     await bot.say('Buscando...')
     try:
-        author, comment, title = choose_random_porn_comment()
+        author, comment, title, url = choose_random_porn_comment()
         author = '**O '+author+'  comentou o seguinte:**\n'
         title = '**vi isso no video:**\n`'+title+'`'
         await bot.say(author)
         await bot.say(comment, tts=True)
         await bot.say(title)
+        embed = discord.Embed(
+            title='Link Maroto',
+            url='https://xvideos.com'+url,
+            description='pega o video aqui meu parceiro \:wink:'
+        )
+        await bot.send_message(embed)
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 

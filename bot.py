@@ -19,17 +19,11 @@ async def on_ready():
 @bot.command(description='Apresenta a lista de ajuda ao usuário.', pass_context=True)
 async def meajuda(ctx):
     await bot.send_message(ctx.message.author, '*Olá. Aqui estão os comandos:*\n - `!mensagem` - Procura um comentario aleatório no Xvideos em Portugês\n - `!telemensagem` - Procura um comentario aleatório no Xvideos em Portugês e o envia com TTS (Text to Speech)\n - `!busca *termo*` - Procura um video pelo termo passado, se não passado nenhum, é retornado um video aleatório\n - `!meajuda` - Mostra esta mensagem.\n\n Encontrou algum problema ou tem alguma sugestão para o bot? Sinta-se livre para nos enviar uma mensagem por este link https://github.com/marquesgabriel/bot-discord-comentarios-xvideos/issues\n')
-    embed = discord.Embed(
-        title='Link Maroto',
-        url='https://xvideos.com'+url,
-        description='pega o video aqui meu parceiro \:wink:'
-    )
-    await bot.send_message(embed)
     await bot.delete_message(ctx.message)
 
 
-@bot.command(description='Procura um comentário no xvideos.')
-async def mensagem():
+@bot.command(description='Procura um comentário no xvideos.', pass_context=True)
+async def mensagem(ctx):
     await bot.say('**Buscando...\n**')
     try:
         comment = choose_random_porn_comment()
@@ -39,8 +33,8 @@ async def mensagem():
 
     await bot.delete_message(ctx.message)
 
-@bot.command(description='Procura um comentário no xvideos. COM TTS.')
-async def telemensagem():
+@bot.command(description='Procura um comentário no xvideos. COM TTS.', pass_context=True)
+async def telemensagem(ctx):
     await bot.say('Buscando...')
     try:
         author, comment, title, url = choose_random_porn_comment()
@@ -49,11 +43,13 @@ async def telemensagem():
         await bot.say(author)
         await bot.say(comment, tts=True)
         await bot.say(title)
+        print(url)
         embed = discord.Embed(
             title='Link Maroto',
             url='https://xvideos.com'+url,
             description='pega o video aqui meu parceiro \:wink:'
         )
+        print(embed)
         await bot.send_message(embed)
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')

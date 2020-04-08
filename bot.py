@@ -31,6 +31,7 @@ async def mensagem(ctx):
         await ctx.channel.send('https://xvideos.com'+url)
         await ctx.channel.send('(LINK)[https://xvideos.com'+url+']')
     except Exception:
+        print(Exception);
         await bot.say('Houve uma falha na busca. Tente novamente.')
 
     await bot.delete_message(ctx.message)
@@ -47,6 +48,7 @@ async def telemensagem(ctx):
         await bot.say(title)
         await bot.say('LINK: https://xvideos.com'+url+'')
     except Exception:
+        print(Exception);
         await bot.say('Houve uma falha na busca. Tente novamente.')
 
     await bot.delete_message(ctx.message)
@@ -58,6 +60,7 @@ async def busca(ctx, tag=None):
         link = choose_random_video(tag)
         await bot.send_message(ctx.message.author, 'Segura esse link aí meu parceiro: ' + link)
     except Exception:
+        print(Exception);
         await bot.say('Houve uma falha na busca. Tente novamente.')
 
     await bot.delete_message(ctx.message)

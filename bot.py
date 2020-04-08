@@ -28,13 +28,7 @@ async def mensagem(ctx):
     try:
         comment, url = choose_random_porn_comment()
         await bot.say(format_comment(*comment))
-        embed = discord.Embed(
-            title='Link Maroto',
-            url='https://xvideos.com'+url,
-            description='pega o video aqui meu parceiro \:wink:'
-        )
-        print(embed)
-        await ctx.channel.send(embed)
+        await bot.say('https://xvideos.com'+url)
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 
@@ -50,12 +44,8 @@ async def telemensagem(ctx):
         await bot.say(author)
         await bot.say(comment, tts=True)
         await bot.say(title)
-        embed = discord.Embed(
-            title='Link Maroto',
-            url='https://xvideos.com'+url,
-            description='pega o video aqui meu parceiro \:wink:'
-        )
-        await ctx.channel.send(embed)
+        await bot.say('https://xvideos.com'+url+'')
+        await bot.say('(LINK)[https://xvideos.com'+url+']')
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 

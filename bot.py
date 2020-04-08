@@ -34,7 +34,7 @@ async def mensagem(ctx):
             description='pega o video aqui meu parceiro \:wink:'
         )
         print(embed)
-        await bot.send(embed)
+        await ctx.channel.send(embed)
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 
@@ -55,7 +55,7 @@ async def telemensagem(ctx):
             url='https://xvideos.com'+url,
             description='pega o video aqui meu parceiro \:wink:'
         )
-        await bot.send(embed)
+        await ctx.channel.send(embed)
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 

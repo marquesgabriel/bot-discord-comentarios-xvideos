@@ -28,7 +28,8 @@ async def mensagem(ctx):
     try:
         comment, url = choose_random_porn_comment()
         await bot.say(format_comment(*comment))
-        await bot.say('https://xvideos.com'+url)
+        await ctx.channel.send('https://xvideos.com'+url)
+        await ctx.channel.send('(LINK)[https://xvideos.com'+url+']')
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 
@@ -44,8 +45,7 @@ async def telemensagem(ctx):
         await bot.say(author)
         await bot.say(comment, tts=True)
         await bot.say(title)
-        await bot.say('https://xvideos.com'+url+'')
-        await bot.say('(LINK)[https://xvideos.com'+url+']')
+        await bot.say('LINK: https://xvideos.com'+url+'')
     except Exception:
         bot.say('Houve uma falha na busca. Tente novamente.')
 

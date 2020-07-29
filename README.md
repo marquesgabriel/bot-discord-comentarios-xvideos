@@ -4,7 +4,7 @@ Este bot pesquisa um comentário aleatório de um vídeo aleatório do xvideos. 
 
 *UPDATE*
 
-Agora também é possível fazer uma busca por vídeos aleatórios com/sem palavras-chave
+Agora também é possível fazer uma busca por vídeos aleatórios com/sem palavras-chave.
 
 ### Lista de comandos
 

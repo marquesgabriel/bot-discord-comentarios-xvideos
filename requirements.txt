@@ -1,3 +1,4 @@
 requests
 bs4
-discord.py==0.16.12
+discord.py
+# discord.py==0.16.12

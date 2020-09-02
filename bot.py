@@ -24,29 +24,29 @@ async def meajuda(ctx):
 
 @client.command(description='Procura um comentário no xvideos.')
 async def mensagem(ctx):
-    await ctx.say('**Buscando...\n**')
+    await ctx.send('**Buscando...\n**')
     try:
         comment, url = choose_random_porn_comment()
-        await ctx.say(format_comment(*comment))
-        await ctx.say('https://xvideos.com'+url)
+        await ctx.send(format_comment(*comment))
+        await ctx.send('https://xvideos.com'+url)
     except Exception :
-        await ctx.say('Houve uma falha na busca. Tente novamente.')
+        await ctx.send('Houve uma falha na busca. Tente novamente.')
 
     await client.delete_message(ctx.message)
 
 @client.command(description='Procura um comentário no xvideos. COM TTS.')
 async def telemensagem(ctx):
-    await ctx.say('Buscando...')
+    await ctx.send('Buscando...')
     try:
         author, comment, title, url = choose_random_porn_comment()
         author = '**O '+author+'  comentou o seguinte:**\n'
         title = '**vi isso no video:**\n`'+title+'`'
-        await ctx.say(author)
-        await ctx.say(comment, tts=True)
-        await ctx.say(title)
-        await ctx.say('https://xvideos.com'+url)
+        await ctx.send(author)
+        await ctx.send(comment, tts=True)
+        await ctx.send(title)
+        await ctx.send('https://xvideos.com'+url)
     except Exception :
-        await ctx.say('Houve uma falha na busca. Tente novamente.')
+        await ctx.send('Houve uma falha na busca. Tente novamente.')
 
     await client.delete_message(ctx.message)
 
@@ -57,7 +57,7 @@ async def busca(ctx, tag=None):
         link = choose_random_video(tag)
         await client.send_message(ctx.message.author, 'Segura esse link aí meu parceiro: ' + link)
     except Exception:
-        await ctx.say('Houve uma falha na busca. Tente novamente.')
+        await ctx.send('Houve uma falha na busca. Tente novamente.')
 
     await client.delete_message(ctx.message)
 

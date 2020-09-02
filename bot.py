@@ -14,7 +14,7 @@ def format_comment(author, content, title, url):
 @client.event
 async def on_ready():
     print("Bot online!")
-    await client.change_presence(game=discord.Game(name='digite !meajuda para mais informações'))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game(name='digite !meajuda para mais informações'))
 
 @client.command(description='Apresenta a lista de ajuda ao usuário.', pass_context=True)
 async def meajuda(ctx):

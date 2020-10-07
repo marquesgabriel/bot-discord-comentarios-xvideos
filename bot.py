@@ -26,8 +26,8 @@ async def meajuda(ctx):
 async def mensagem(ctx):
     await ctx.send('**Buscando...\n**')
     try:
-        comment, url = choose_random_porn_comment()
-        await ctx.send(format_comment(*comment))
+        author, content, title, url = choose_random_porn_comment()
+        await ctx.send(format_comment(author, content, title, url))
         await ctx.send('https://xvideos.com'+url)
     except Exception :
         await ctx.send('Houve uma falha na busca. Tente novamente.')

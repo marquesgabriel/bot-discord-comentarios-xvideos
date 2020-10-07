@@ -52,10 +52,11 @@ async def telemensagem(ctx):
 
 
 @client.command(description='Procura um video baseado na tag passada.')
-async def busca(ctx, tag=None):
+async def busca(ctx, *tags):
     try:
-        link = choose_random_video(tag)
-        await client.send_message(ctx.message.author, 'Segura esse link aí meu parceiro: ' + link)
+        term = '+'.join(tags)
+        link = choose_random_video(term)
+        await ctx.message.author.send('Segura esse link aí meu parceiro: ' + link)
     except Exception:
         await ctx.send('Houve uma falha na busca. Tente novamente.')
 

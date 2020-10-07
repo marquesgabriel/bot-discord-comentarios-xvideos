@@ -19,7 +19,7 @@ async def on_ready():
 @client.command(description='Apresenta a lista de ajuda ao usuário.')
 async def meajuda(ctx):
     await client.send_message(ctx.message.author, '*Olá. Aqui estão os comandos:*\n - `!mensagem` - Procura um comentario aleatório no Xvideos em Portugês\n - `!telemensagem` - Procura um comentario aleatório no Xvideos em Portugês e o envia com TTS (Text to Speech)\n - `!busca *termo*` - Procura um video pelo termo passado, se não passado nenhum, é retornado um video aleatório\n - `!meajuda` - Mostra esta mensagem.\n\n Encontrou algum problema ou tem alguma sugestão para o bot? Sinta-se livre para nos enviar uma mensagem por este link https://github.com/marquesgabriel/bot-discord-comentarios-xvideos/issues\n')
-    await client.delete_message(ctx.message)
+    await discord.Message.delete(ctx.message)
 
 
 @client.command(description='Procura um comentário no xvideos.')
@@ -32,7 +32,7 @@ async def mensagem(ctx):
     except Exception :
         await ctx.send('Houve uma falha na busca. Tente novamente.')
 
-    await client.delete_message(ctx.message)
+    await discord.Message.delete(ctx.message)
 
 @client.command(description='Procura um comentário no xvideos. COM TTS.')
 async def telemensagem(ctx):
@@ -48,7 +48,7 @@ async def telemensagem(ctx):
     except Exception :
         await ctx.send('Houve uma falha na busca. Tente novamente.')
 
-    await client.delete_message(ctx.message)
+    await discord.Message.delete(ctx.message)
 
 
 @client.command(description='Procura um video baseado na tag passada.')
@@ -59,7 +59,7 @@ async def busca(ctx, tag=None):
     except Exception:
         await ctx.send('Houve uma falha na busca. Tente novamente.')
 
-    await client.delete_message(ctx.message)
+    await discord.Message.delete(ctx.message)
 
 
 client.run(BOT_TOKEN)
